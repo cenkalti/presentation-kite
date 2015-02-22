@@ -1,0 +1,77 @@
+Kite
+Micro-service framework in Go
+Tags: kite, micro-service, framework, go, golang
+
+Cenk Altı
+koding.com
+http://cenkalti.net
+@cilginkorsancek
+
+http://github.com/cenkalti/presentation-kite
+
+* What is micro-service framework?
+
+- RPC (Remote Procedure Call)
+- Service discovery
+- Authentication and authorization
+
+* koding.com
+
+Koding is a cloud-based development environment complete with free VMs, IDE & sudo enabled terminal where you can learn Ruby, Go, Java, NodeJS, PHP, C, ...
+
+.image koding.png _ 700
+
+* RPC (Remote Procedure Call)
+
+- Bi-directional
+- Async
+- Uses dnode protocol (JSON-RPC with function callbacks)
+- Has session support via SockJS
+- Reconnection support
+
+* RPC example
+
+Server:
+
+.play first.go
+
+* RPC example
+
+Client:
+
+.play second.go
+
+* Kontrol
+
+- Provides service discovery methods
+- Kite itself
+
+Initial setup:
+
+    # generate rsa key
+    openssl genrsa -out private_key.pem 4096
+    openssl rsa -pubout -in private_key.pem -out public_key.pem
+
+    # generate kite.key file
+    kontrol -initial -publickeyfile public_key.pem -privatekeyfile private_key.pem \
+        -username cenk -kontrolurl http://localhost:4000/kite
+    cat ~/.kite/kite.key
+    kitectl showkey
+
+    # run it
+    etcd &
+    KONTROL_STORAGE=etcd kontrol -machines http://localhost:4001 \
+        -publickeyfile public_key.pem -privatekeyfile private_key.pem
+
+* Kontrol example
+
+Client:
+
+.play first_kontrol.go /func main/,
+
+* Kontrol example
+
+Server:
+
+.play second_kontrol.go /func main/,
+
