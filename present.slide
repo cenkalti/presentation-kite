@@ -43,25 +43,29 @@ Client:
 
 * Kontrol
 
-- Provides service discovery methods
+- Provides service discovery methods to kites
 - Kite itself
+- Every kite registers itself to Kontrol by calling Register() function
+- Kontrol registers the kite under path like this:
+    /<username>/<environment>/<name>/<version>/<region>/<hostname>/<id>
+- Other kites can query this kite with the same path or part of the path
 
-Initial setup:
+* Kontrol (initial setup)
 
     # generate rsa key
-    openssl genrsa -out private_key.pem 4096
-    openssl rsa -pubout -in private_key.pem -out public_key.pem
+    openssl genrsa -out kontrol_key_private.pem 2048
+    openssl rsa -pubout -in kontrol_key_private.pem -out kontrol_key_public.pem
+
+.code kontrol_env
 
     # generate kite.key file
-    kontrol -initial -publickeyfile public_key.pem -privatekeyfile private_key.pem \
-        -username cenk -kontrolurl http://localhost:4000/kite
+    kontrol -initial
     cat ~/.kite/kite.key
     kitectl showkey
 
     # run it
     etcd &
-    KONTROL_STORAGE=etcd kontrol -machines http://localhost:4001 \
-        -publickeyfile public_key.pem -privatekeyfile private_key.pem
+    kontrol
 
 * Kontrol example
 

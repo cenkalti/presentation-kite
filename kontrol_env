@@ -1,0 +1,8 @@
+# prepare environment for kontrol
+export KONTROL_PORT=4000
+export KONTROL_USERNAME=cenk
+export KONTROL_STORAGE=etcd
+export KONTROL_MACHINES="http://localhost:4001"
+export KONTROL_KONTROLURL="http://127.0.0.1:4000/kite"
+export KONTROL_PUBLICKEYFILE=kontrol_key_public.pem
+export KONTROL_PRIVATEKEYFILE=kontrol_key_private.pem
