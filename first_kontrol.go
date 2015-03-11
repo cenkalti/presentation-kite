@@ -15,8 +15,10 @@ func main() {
 	k.Config.DisableAuthentication = true
 
 	k.HandleFunc("square", square)
-	k.Register(&url.URL{Scheme: "http", Host: "tardis.local:6501", Path: "/kite"})
-	k.Run()
+	go k.Run()
+	<-k.ServerReadyNotify()
+	k.Register(&url.URL{Scheme: "http", Host: "127.0.0.1:6501", Path: "/kite"})
+	<-k.ServerCloseNotify()
 }
 
 func square(r *kite.Request) (interface{}, error) {
