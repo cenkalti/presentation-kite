@@ -69,13 +69,17 @@ Client:
 
 * Kontrol example
 
-Client:
+Server:
 
 .play first_kontrol.go /func main/,
 
 * Kontrol example
 
-Server:
+Client:
 
 .play second_kontrol.go /func main/,
+
+* kite.js example:
+
+.code kitejs.html
 

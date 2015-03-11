@@ -11,11 +11,11 @@ import (
 func main() {
 	k := kite.New("first", "1.0.0")
 	k.Config.ReadKiteKey()
-	k.Config.Port = 6001
+	k.Config.Port = 6501
 	k.Config.DisableAuthentication = true
 
 	k.HandleFunc("square", square)
-	k.Register(&url.URL{Scheme: "http", Host: "localhost:6001", Path: "/kite"})
+	k.Register(&url.URL{Scheme: "http", Host: "tardis.local:6501", Path: "/kite"})
 	k.Run()
 }
 

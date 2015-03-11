@@ -1,0 +1,17 @@
+<!DOCTYPE html>
+<hmtl>
+    <head>
+        <title>kite.js example</title>
+        <script src="./kite.js/static/vendor/sockjs-0.3.4.min.nojson.js"></script>
+        <script src="./kite.js/static/vendor/uuid-tiny.js"></script>
+        <script src="./kite.js/static/vendor/bluebird.js"></script>
+        <script src="./kite.js/static/browser/kite-promises-bundle.js"></script>
+    </head>
+    <body>
+    <script type="text/javascript">
+        var Kite = require('kite');
+        k = new Kite({url: 'http://127.0.0.1:6501/kite', transportClass: SockJS});
+        k.tell('square', [4], function(err, result){console.log(err, result)});
+    </script>
+    </body>
+</hmtl>
