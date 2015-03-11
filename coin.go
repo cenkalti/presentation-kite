@@ -1,4 +1,7 @@
 // coin.go
+//
+// run with:
+//     $ parallel -j0 ./coin ::: {1..100}
 
 package main
 

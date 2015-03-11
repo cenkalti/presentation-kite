@@ -83,3 +83,24 @@ Client:
 
 .code kitejs.html
 
+* Concurrency example (coin flipper)
+
+- We have coin kite
+- coin kite has "flip" method returning "heads" or "tails"
+- Run 100 coin kites
+- Each one registers to Kontrol instance
+- Query Kontrol and get list of running coin kites
+- Call "flip" method on each kite concurrently
+- Collect results and print total "heads" and "tails" count
+
+* Concurrency example (main)
+
+.code coin.go /func main/,/\n}\n/
+
+* Concurrency example (flip)
+
+.code coin.go /func flip/,
+
+* Concurrency example (flipper)
+
+.code flipper.go
